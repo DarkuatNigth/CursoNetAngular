@@ -1,0 +1,46 @@
+# Archivos generados por .NET
+bin/
+obj/
+
+# Archivos de configuración de usuario de Visual Studio
+.vs/
+.vscode/
+.idea/
+
+# Archivos de configuración de usuario de Rider
+.idea/
+
+# Archivos específicos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de cache de NuGet
+.nuget/
+# Paquetes de NuGet
+*.nupkg
+# Archivos de configuración de NuGet
+.nuget.config
+
+# Archivos de logs
+*.log
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+*.suo
+
+# Archivos de configuración de ASP.NET
+appsettings.Development.json
+appsettings.Production.json
+
+# Archivos de Visual Studio para Mac
+.vscode/
+
+# Ignorar los archivos y directorios de tu subdirectorio específico
+Netkubernetes/bin/
+Netkubernetes/obj/
+Netkubernetes/.vs/
+Netkubernetes/*.log
+Netkubernetes/*.tmp
+Netkubernetes/*.bak
