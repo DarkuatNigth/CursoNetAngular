@@ -14,6 +14,9 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '@src/environments/environment';
+import { IndicatorsModule } from './shared/indicators';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PopupsModule } from './shared/popups';
 
 @NgModule({
   declarations: [
@@ -30,8 +33,12 @@ import { environment } from '@src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase.config),
     AngularFireStorageModule,
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
     //#endregion
+
+    IndicatorsModule,
+    BrowserAnimationsModule,
+    PopupsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
