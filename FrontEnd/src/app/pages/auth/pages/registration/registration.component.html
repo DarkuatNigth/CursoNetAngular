@@ -1,0 +1,110 @@
+<section fxLayoutAlign="center">
+  <mat-card>
+    <form
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="10px"
+      #f="ngForm"
+      (ngSubmit)="registrarUsuario(f)"
+    >
+    <mat-form-field>
+      <mat-label>Ingrese Nombre</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Ingrese Nombre"
+        name="Nombre"
+        ngModel
+        required
+      />
+      <mat-error> Debe ingresar un Nombre </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+    <mat-label>Ingrese Apellido</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="Ingrese Apellido"
+      name="Apellido"
+      ngModel
+      required
+    />
+    <mat-error> Debe ingresar un Apellido </mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Ingrese Username</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="Ingrese Username"
+      name="Username"
+      ngModel
+      required
+    />
+    <mat-error> Debe ingresar un username </mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Ingrese un Telefono</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="Ingrese telefono"
+      name="Telefono"
+      ngModel
+      required
+    />
+    <mat-error> Debe ingresar un Telefono. </mat-error>
+  </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese E-Mail</mat-label>
+        <input
+          type="email"
+          matInput
+          placeholder="E-Mail"
+          name="Email"
+          ngModel
+          required
+        />
+        <mat-error> Debe ingresar un E-Mail </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <mat-label>Ingrese Password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Password"
+          name="Password"
+          ngModel
+          required
+          minlength="7"
+        />
+        <mat-error> Debe ingresar un Pasword </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Confirme Password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Confirme Password"
+          name="PasswordConfirme"
+          ngModel
+          required
+          minlength="7"
+        />
+        <mat-error> El password debe tener mas de 7 caracteres. </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Enviar</button>
+    </form>
+  </mat-card>
+</section>

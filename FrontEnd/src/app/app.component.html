@@ -1,7 +1,14 @@
-<button (click)="onToggleSpinner()"> Toggle Spinner</button>
-<app-spinner *ngIf="blShowSpinner"></app-spinner>
+<mat-sidenav-container>
+  <mat-sidenav #menu>
+    <app-menu-list (objMenuToggle)="menu.toggle()">
 
+    </app-menu-list>
+  </mat-sidenav>
 
-<button appFilesUpload [blMultiple]="true" >
-Subir imagenes al servidor
-</button>
+  <mat-sidenav-content>
+    <app-header (objMenuToggle)="menu.toggle()"></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
