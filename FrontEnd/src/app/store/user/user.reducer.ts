@@ -24,7 +24,8 @@ export function userReducer(state = initialState, action: fromActions.All | any)
       return {...state,loading: true,error: null};
     }
     case fromActions.UserActionTypes.INIT_AUTHORIZED:{
-      return {...state,loading: false,entity: action.User, id: action.id, error: null};
+      console.log('INIT_AUTHORIZED', action);
+      return {...state,loading: false,entity: action.objPayload, id: action.id, error: null};
     }
     case fromActions.UserActionTypes.INIT_ERROR:{
       return  {...state,loading: false,entity: null, id: null, error: action.error};
@@ -37,7 +38,8 @@ export function userReducer(state = initialState, action: fromActions.All | any)
       return  {...state,loading: true,entity: null, id: null, error: null};
     }
     case fromActions.UserActionTypes.SIGIN_IN_EMAIL_SUCCESS:{
-      return  {...state,loading: false,entity: action.User, id: action.id, error: null};
+      console.log('SIGIN_IN_EMAIL_SUCCESS', action);
+      return  {...state,loading: false,entity: action.objPayload, id: action.id, error: null};
     }
     case fromActions.UserActionTypes.SIGIN_IN_EMAIL_ERROR:{
       return  {...state,loading: false,entity: null, id: null, error: action.error};
@@ -47,7 +49,7 @@ export function userReducer(state = initialState, action: fromActions.All | any)
       return  {...state,loading: true,entity: null, id: null, error: null};
     }
     case fromActions.UserActionTypes.SIGN_UP_EMAIL_SUCCESS:{
-      return  {...state,loading: false,entity: action.User, id: action.id, error: null};
+      return  {...state,loading: false,entity: action.objPayload, id: action.id, error: null};
     }
     case fromActions.UserActionTypes.SIGN_UP_EMAIL_ERROR:{
       return  {...state,loading: false,entity: null, id: null, error: action.error};

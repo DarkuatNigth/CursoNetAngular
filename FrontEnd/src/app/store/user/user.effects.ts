@@ -34,7 +34,7 @@ export class UserEffects{
             localStorage.setItem('token', objResponse.strToken);
             this.objRouter.navigate(['/']);
           }),
-          map((objResponse: UserResponse) => new fromActions.SignUpEmailSuccess(objResponse.strUserEmail, objResponse || null)),
+          map((objResponse: UserResponse) => new fromActions.SignUpEmailSuccess(objResponse.strEmail, objResponse || null)),
           catchError((error) => {
             this.objNotificacion.error("Errores al registrar un nuevo usuario");
             return of(new fromActions.SignUpEmailError(error.message));
@@ -52,10 +52,11 @@ export class UserEffects{
       switchMap((objPayload) =>
         this.objHttpClient.post<UserResponse>(`${environment.url}api/usuario/login`, objPayload).pipe(
           tap((objResponse: UserResponse) => {
+            console.log('respuesta',objResponse);
             localStorage.setItem('token', objResponse.strToken);
             this.objRouter.navigate(['/']);
           }),
-          map((objResponse: UserResponse) => new fromActions.SignInEmailSuccess(objResponse.strUserEmail, objResponse || null)),
+          map((objResponse: UserResponse) => new fromActions.SignInEmailSuccess(objResponse.strEmail, objResponse || null)),
           catchError((error) => {
             this.objNotificacion.error("Las credenciales son incorrectas.");
             return of(new fromActions.SignInEmailError(error.message));
@@ -77,7 +78,7 @@ export class UserEffects{
           tap((objResponse: UserResponse) => {
             console.log('Data del usuario en sesion que viene del servidor: ',objResponse);
           }),
-          map((objResponse: UserResponse) => new fromActions.InitAuthorized(objResponse.strUserEmail, objResponse || null)),
+          map((objResponse: UserResponse) => new fromActions.InitAuthorized(objResponse.strEmail, objResponse || null)),
           catchError((error) => {
             return of(new fromActions.InitError(error.message));
           })

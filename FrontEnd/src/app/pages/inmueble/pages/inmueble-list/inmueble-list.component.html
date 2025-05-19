@@ -1,0 +1,26 @@
+<app-spinner *ngIf="blCargando$ | async"></app-spinner>
+
+<section class="container">
+  <ul class="cards" *ngIf="lstInmueble$ | async as lstInmueble">
+    <li class="cards__item" *ngFor="let objInmueble of lstInmueble">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title> {{ objInmueble.strNombre}}</mat-card-title>
+          <mat-card-subtitle>Precio: {{objInmueble.dbPrecio}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{objInmueble.strFoto ? objInmueble.strFoto : strPictureDefault}}"
+        alt="objInmueble.strNombre" />
+        <mat-card-content>
+          <p>
+            {{objInmueble.strDireccion}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" >Ver Detalles</button>
+          <button mat-button color="warn" >Eliminar</button>
+        </mat-card-actions>
+      </mat-card>
+
+    </li>
+  </ul>
+</section>

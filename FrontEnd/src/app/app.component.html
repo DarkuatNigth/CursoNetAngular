@@ -1,12 +1,15 @@
 <mat-sidenav-container>
   <mat-sidenav #menu>
-    <app-menu-list (objMenuToggle)="menu.toggle()">
-
+    <app-menu-list (objMenuToggle)="menu.toggle()"
+    (objLogout)="onSignOut()" [blIsAutorized] = "blIsAutorized$  | async">
     </app-menu-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <app-header (objMenuToggle)="menu.toggle()"></app-header>
+    <app-header (objMenuToggle)="menu.toggle()"
+    [blIsAutorized] = "blIsAutorized$  | async"
+    [objUser]="objUser$ | async"
+    (objLogout)="onSignOut()"></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>

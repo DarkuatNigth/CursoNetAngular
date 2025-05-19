@@ -1,3 +1,4 @@
+<app-spinner *ngIf="objLoading$ | async"></app-spinner>
 <section fxLayoutAlign="center">
   <mat-card>
     <form
@@ -41,7 +42,7 @@
       type="text"
       matInput
       placeholder="Ingrese Username"
-      name="Username"
+      name="UserName"
       ngModel
       required
     />

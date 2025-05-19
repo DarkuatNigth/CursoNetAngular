@@ -17,18 +17,41 @@ using NetKubernetes.Profiles;
 using NetKubernetes.Token;;
 
 var builder = WebApplication.CreateBuilder(args);
-#region Conexio Configuracion Base 
-builder.Services.AddDbContext<AppDbContext>(options => 
+
+
+builder.Services.Configure<IdentityOptions>(options =>
 {
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = false; // <- aquí
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+});
+#region Conexio Configuracion Base 
+// builder.Services.AddDbContext<AppDbContext>(options => 
+// {
+//     //Logs de informacion de todo comando que se ejecuta en SQL
+//     options.LogTo
+//     (
+//         Console.WriteLine, 
+//         new []  {DbLoggerCategory.Database.Command.Name}, 
+//         LogLevel.Information)
+//     .EnableSensitiveDataLogging();
+//     options.UseSqlServer(builder.Configuration.GetConnectionString("SQLServerConnection")!);
+
+// });
+
+var objConnectionMysqlString = builder.Configuration.GetConnectionString("MySQLConnection");
+builder.Services.AddDbContext<AppDbContext>(objOptions =>
+{
+    objOptions.UseMySql(objConnectionMysqlString, ServerVersion.AutoDetect(objConnectionMysqlString));
     //Logs de informacion de todo comando que se ejecuta en SQL
-    options.LogTo
+    objOptions.LogTo
     (
-        Console.WriteLine, 
-        new []  {DbLoggerCategory.Database.Command.Name}, 
+        Console.WriteLine,
+        new[] { DbLoggerCategory.Database.Command.Name },
         LogLevel.Information)
     .EnableSensitiveDataLogging();
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SQLServerConnection")!);
-
 });
 #endregion
 

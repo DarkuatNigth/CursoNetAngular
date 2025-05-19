@@ -155,8 +155,9 @@ public class UsuarioRepository : IUsuarioRepository
                 strTelefono = objUsuario.strTelefono,
                 strUsuarioCreacion =_objUsuarioSesion.ObtenerUsuarioSesion()
             };
-            
+            _objLogger.LogInformation($"UsuarioRepository.RegistroUsuario: {objUsuarioCreacion}");
             var objResultado = await _objUserManager.CreateAsync(objUsuarioCreacion, objUsuario.strPassword!);
+            _objLogger.LogInformation($"Luego Creacion: {objResultado}");
             if(objResultado.Succeeded){
                 objUsuarioResponseDto = TransformarUsuarioToUsuarioResponseDto(objUsuarioCreacion);
                 return objUsuarioResponseDto; 

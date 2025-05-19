@@ -12,4 +12,4 @@ export interface UserRequest extends User{
   strPassword: string;
 }
 
-export type UserCreateRequest = Omit<UserRequest, 'strToken'>;
+export type UserCreateRequest = Omit<UserRequest, 'strToken' | 'intId'>;

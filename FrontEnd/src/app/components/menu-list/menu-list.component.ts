@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-menu-list',
@@ -7,6 +7,8 @@ import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 })
 export class MenuListComponent implements OnInit {
   @Output() objMenuToggle= new EventEmitter<void>();
+  @Input() blIsAutorized !: boolean | null;
+  @Output() objLogout = new EventEmitter<void>();
   constructor() { }
 
   ngOnInit(): void {
@@ -16,4 +18,7 @@ export class MenuListComponent implements OnInit {
     this.objMenuToggle.emit();
   }
 
+  onSignOut(): void {
+    this.objLogout.emit();
+  }
 }

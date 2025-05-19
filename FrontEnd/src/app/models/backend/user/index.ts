@@ -4,7 +4,7 @@ export interface User{
   strNombre: string;
   strApellido: string;
   strTelefono: string;
-  strUserEmail: string;
+  strEmail: string;
   strToken: string;
 }
 
