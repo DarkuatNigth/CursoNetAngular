@@ -11,5 +11,5 @@ export const environment = {
       appId: "1:973820375285:web:8a126134898837c0fed5bc"
     }
   },
-  url:  'http://localhost:5000/',
+  url:  'http://app.35.184.182.119.nip.io/',
 };
