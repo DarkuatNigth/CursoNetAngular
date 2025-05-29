@@ -28,19 +28,19 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireLowercase = false;
 });
 #region Conexio Configuracion Base 
-// builder.Services.AddDbContext<AppDbContext>(options => 
-// {
-//     //Logs de informacion de todo comando que se ejecuta en SQL
-//     options.LogTo
-//     (
-//         Console.WriteLine, 
-//         new []  {DbLoggerCategory.Database.Command.Name}, 
-//         LogLevel.Information)
-//     .EnableSensitiveDataLogging();
-//     options.UseSqlServer(builder.Configuration.GetConnectionString("SQLServerConnection")!);
+ builder.Services.AddDbContext<AppDbContext>(options => 
+ {
+     //Logs de informacion de todo comando que se ejecuta en SQL
+     options.LogTo
+     (
+         Console.WriteLine, 
+         new []  {DbLoggerCategory.Database.Command.Name}, 
+         LogLevel.Information)
+     .EnableSensitiveDataLogging();
+     options.UseSqlServer(builder.Configuration.GetConnectionString("SQLServerConnection")!);
 
-// });
-
+ });
+/*
 var objConnectionMysqlString = builder.Configuration.GetConnectionString("MySQLConnection");
 builder.Services.AddDbContext<AppDbContext>(objOptions =>
 {
@@ -52,7 +52,7 @@ builder.Services.AddDbContext<AppDbContext>(objOptions =>
         new[] { DbLoggerCategory.Database.Command.Name },
         LogLevel.Information)
     .EnableSensitiveDataLogging();
-});
+});*/
 #endregion
 
 // Add services to the container.

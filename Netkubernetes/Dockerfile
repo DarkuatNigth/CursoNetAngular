@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
-EXPOSE 5000
+EXPOSE 80
 
 ENV ASPNETCORE_URLS=http://+:5000
 
@@ -12,15 +12,16 @@ USER appuser
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG configuration=Release
 WORKDIR /src
-COPY ["Netkubernetes/Netkubernetes.csproj", "Netkubernetes/"]
-RUN dotnet restore "Netkubernetes/Netkubernetes.csproj"
+#COPY ["Netkubernetes/Netkubernetes.csproj", "Netkubernetes/"]
+COPY ["Netkubernetes.csproj", "./"]
+RUN dotnet restore "Netkubernetes.csproj"
 COPY . .
-WORKDIR "/src/Netkubernetes"
-RUN dotnet build "Netkubernetes.csproj" -c $configuration -o /app/build
+WORKDIR "/src/."
+RUN dotnet build "/src/Netkubernetes.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
 ARG configuration=Release
-RUN dotnet publish "Netkubernetes.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "/src/Netkubernetes.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
