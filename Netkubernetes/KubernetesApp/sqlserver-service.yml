@@ -7,7 +7,7 @@ metadata:
     name: mssql-service
     app: app
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: app
     name: mssql-pod
